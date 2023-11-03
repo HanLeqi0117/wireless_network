@@ -6,12 +6,12 @@ import os
 class RssiNode:
     def __init__(self):
         self.interface_name = rospy.get_param('interface_name', default='wlan0')
-        self.frame_id = rospy.get_param('frame_id', default=os.environ['HOSTNAME'])
+        self.frame_id = rospy.get_param('frame_id', default='pc')
         self.cmd = ['sudo', 'iwlist', self.interface_name, 'scan']
-        self.publisher = rospy.Publisher('wireless_rssi', WirelessScan)
+        self.publisher = rospy.Publisher('wireless_rssi', WirelessScan, queue_size=10)
         pub_timer = rospy.Timer(rospy.Duration(1), self.wireless_scan_callback)
 
-    def wireless_scan_callback(self):
+    def wireless_scan_callback(self, event):
         runcmd = subprocess.check_output(self.cmd)
         wireless_scan = WirelessScan()
         wireless_scan.header.frame_id = self.frame_id
