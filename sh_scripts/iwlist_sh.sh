@@ -1,0 +1,1 @@
+echo "Robo1234" | sudo -S iwlist wlp69s0 scanning

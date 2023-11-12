@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="wireless_network" type="wifi_rssi_node.py" name='wifi_rssi_node' output="screen">
+        <param name="interface_name" value="wlp69s0"/>
+        <param name="usr_password" value="Robo1234"/>
+        <param name="frame_id" value="host"/>
+        <param name="rate" value="0.5"/>
+    </node>
+</launch>

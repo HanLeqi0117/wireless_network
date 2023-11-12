@@ -1,0 +1,1 @@
+echo 'Robo1234' | sudo -S iw wlp69s0 scan | egrep 'wlp89s0|ago|signal|primary channel|SSID'
